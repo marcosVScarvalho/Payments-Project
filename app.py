@@ -3,6 +3,8 @@ from repository.database import db
 from db_models.payment import Payment
 from datetime import datetime, timedelta
 from payments.pix import Pix
+import os
+from flask import send_file
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -33,8 +35,7 @@ def create_payment_pix():
     return jsonify({"message": "the payment has been created" ,
                     "payment": new_payment.to_dict()})
 
-import os
-from flask import send_file
+
 
 @app.route("/payments/pix/qr_code/<file_name>", methods=["GET"])
 def get_image(file_name):
