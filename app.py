@@ -39,7 +39,9 @@ def create_payment_pix():
 
 @app.route("/payments/pix/qr_code/<file_name>", methods=["GET"])
 def get_image(file_name):
-    file_path = os.path.join(app.root_path, "static", "img", f"{file_name}.png")
+    file_path = os.path.join(app.root_path, "static", "img", f"{file_name}")
+    if not os.path.exists(file_path):
+        return jsonify({"error": "QR Code não encontrado"}), 404
     
     return send_file(file_path, mimetype="image/png")
 
@@ -50,10 +52,13 @@ def pix_confirmation():
 
 @app.route("/payments/pix/<int:payment_id>", methods=['GET'])
 def payment_pix_page(payment_id):
-    return render_template('payment.html')
+    payment = Payment.query.get(payment_id)
+    
+    return render_template('payment.html', payment_id=payment.id, value=payment.value, host="http://127.0.0.1:5000", qr_code=payment.qr_code)
+
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
+    app.run(debug=True)
 
 
 
