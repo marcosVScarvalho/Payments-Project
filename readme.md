@@ -29,5 +29,4 @@ Este projeto é uma API Flask que simula a criação de pagamentos via Pix. A ca
     "expiration_date": "2025-07-14T14:00:00"
   }
 }
-=======
->>>>>>> 1ff2ae2 (finish project)
+
