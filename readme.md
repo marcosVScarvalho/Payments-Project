@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #  Flask Pix Payment API
 
 Este projeto é uma API Flask que simula a criação de pagamentos via Pix. A cada pagamento criado, um QR Code exclusivo é gerado e pode ser visualizado por meio de uma rota dedicada.
@@ -28,3 +29,5 @@ Este projeto é uma API Flask que simula a criação de pagamentos via Pix. A ca
     "expiration_date": "2025-07-14T14:00:00"
   }
 }
+=======
+>>>>>>> 1ff2ae2 (finish project)
